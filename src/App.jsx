@@ -1,17 +1,24 @@
 import './index.css'; 
-import { CityInput } from './components/cityinput';
-import { useEffect } from 'react';
-
+import { LoadingProvider } from './components/loadingContext';
+import { WeatherProvider } from './components/weatherDataCotext';
+import { LatProvider } from './components/latContext';
+import { LonProvider } from './components/lonContext';
+import { Loading } from './components/loading';
 
 function App() {
- 
-  
-    return <div>
-      
-    {loading ? <Loading/> : <CityInput/>}
-    
-    
-  </div>
+  return (
+    <div>
+      <WeatherProvider>
+        <LatProvider>
+          <LonProvider>
+            <LoadingProvider>
+              <Loading/>
+            </LoadingProvider>
+          </LonProvider>
+        </LatProvider>
+      </WeatherProvider>
+    </div>
+  );
 }
 
-  export default App
+export default App;

@@ -1,7 +1,24 @@
-function Data({weatherData}){
+import { useContext } from 'react';
+import {weatherContext} from './weatherDataCotext';
+import {latContext} from './latContext';
+import {lonContext} from './lonContext';
 
+
+function Data({weatherData}){
+const {setWeatherData} = useContext(weatherContext);
+const {lat}=useContext(latContext);
+const {lon} = useContext(lonContext);
     const a = weatherData.list[0];
-    return <div className='dataparent grid grid-cols-1 lg:grid-cols-2 lg:mx-52 mt-0 gap-4'>
+    console.log(a);
+    return<>
+    <div className='flex flex-col items-center'>
+    <div className="flex text-center rounded-full m-10 p-7 text-lg font-medium bg-green-300 hover:bg-green-100 hover:border hover:border-green-300" onClick={() => {
+        setWeatherData(null);
+    }}>Search More</div>
+    <div>{`${lat} ${lon}`}</div>    
+       
+     <div className='dataparent grid grid-cols-1 lg:grid-cols-2 lg:mx-52 mt-0 gap-4'>
+        
         <div className="data col-span-1 flex flex-col bg-gray-300 items-center justify-center lg:m-12 my-0 rounded-xl p-6 w-72 mx-16 px-20 md:w-96 ">
             <h3 className="my-4 font-semibold">Temperature</h3>
             <div className="flex flex-col items-center gap-4">
@@ -35,6 +52,8 @@ function Data({weatherData}){
             
         </div>
     </div>
+</div>
+    </>
 }
 
 export default Data
