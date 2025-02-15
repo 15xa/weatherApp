@@ -49,11 +49,18 @@ export const CityInput = () => {
   };
 
   const Cityin = () => {
+    let isMobile = null;
+  
+    if (typeof window !== "undefined") {
+      isMobile = window.innerWidth < 450;
+    }
+  
     return (
-      <div className={`${weatherData ? "" : "h-screen"} flex ${weatherData ? "" : "items-center"} justify-center`}>
-        <div className="cityin">
-          <div
-            className="bg-green-200 rounded-full p-2 text-lg font-semibold text-center cursor-pointer border border-green-300 hover:bg-green-400"
+      <div className={`${isMobile ? 'bg-bg-mob' : 'bg-bg-pc'} opacity-100 bg-cover bg-center ${weatherData ? "" : "h-screen"} flex ${weatherData ? "" : "items-center"} justify-center`}>
+      <div className={` bg-white rounded-3xl  p-4 py-16 md:p-20 shadow-lg shadow-black-400 shadow`}>
+        <div className="cityin flex flex-col items-center">
+          <button
+            className="bg-green-200 rounded-full p-4 text-lg font-semibold text-center cursor-pointer border border-green-300 hover:bg-green-400"
             onClick={async () => {
               console.log("Location request initiated");
               if (lat && lon) {
@@ -67,7 +74,7 @@ export const CityInput = () => {
             }}
           >
             Fetch for My Location
-          </div>
+          </button>
           <form id="cityinform" onSubmit={handleSubmit}>
             <div
               style={{
@@ -98,6 +105,7 @@ export const CityInput = () => {
             </div>
           </form>
         </div>
+      </div>
       </div>
     );
   };

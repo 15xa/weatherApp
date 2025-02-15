@@ -11,13 +11,19 @@ const {lon} = useContext(lonContext);
     const a = weatherData.list[0];
     console.log(a);
     return<>
+<div className='bg-'>
+<div>
     <div className='flex flex-col items-center'>
+        
     <div className="flex text-center rounded-full m-10 p-7 text-lg font-medium bg-green-300 hover:bg-green-100 hover:border hover:border-green-300" onClick={() => {
         setWeatherData(null);
     }}>Search More</div>
-    <div>{`${lat} ${lon}`}</div>    
+
+    <div className='flex text-center font-medium text-xl'>Weather - <div className='font-semibold'>{`${a.weather[0].main}`}<br/></div></div>
+    <div className='flex text-center font-normal text-xl'>Description - <div className='font-semibold'>{`${a.weather[0].description}`}<br/></div></div>
+
        
-     <div className='dataparent grid grid-cols-1 lg:grid-cols-2 lg:mx-52 mt-0 gap-4'>
+     <div className='dataparent grid grid-cols-1 lg:grid-cols-2  mt-0 gap-10'>
         
         <div className="data col-span-1 flex flex-col bg-gray-300 items-center justify-center lg:m-12 my-0 rounded-xl p-6 w-72 mx-16 px-20 md:w-96 ">
             <h3 className="my-4 font-semibold">Temperature</h3>
@@ -51,8 +57,12 @@ const {lon} = useContext(lonContext);
             </div>
             
         </div>
+
+        <div className='flex justify-center w-full text-xs'>{`${lat} ${lon}`}</div>
     </div>
 </div>
+
+</div></div>
     </>
 }
 

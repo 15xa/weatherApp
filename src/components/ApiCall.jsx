@@ -6,7 +6,7 @@
       console.log("Form submitted");
       
       try {
-            const response = await fetch('http://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=b57d76942447f674ed3cacc5cb415ffd');
+            const response = await fetch('https://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=b57d76942447f674ed3cacc5cb415ffd');
             if(!response.ok){
               throw new Error('City not found, try coordinates')
               
