@@ -5,6 +5,7 @@ export const weatherContext = createContext();
 export const WeatherProvider = ({ children }) => {
   const [weatherData, setWeatherData] = useState(null);
 
+
   return (
     <weatherContext.Provider value={{ weatherData, setWeatherData }}>
       {children}
